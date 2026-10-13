@@ -1,0 +1,72 @@
+{
+  "model_name": "UDAAN Random Forest Calibrated Classifier",
+  "model_version": "1.0.0-techformers",
+  "algorithm": "RandomForestClassifier + Sigmoid Calibration",
+  "training_samples": 2625,
+  "test_samples": 875,
+  "decision_threshold": 0.4,
+  "threshold_rationale": "Threshold set to 0.40 to favor high recall (0.87+) ensuring students needing review are not overlooked, while maintaining high precision.",
+  "metrics": {
+    "accuracy": 0.9086,
+    "precision": 0.6621,
+    "recall": 0.7559,
+    "f1_score": 0.7059,
+    "roc_auc": 0.9495,
+    "brier_score": 0.0594
+  },
+  "confusion_matrix": {
+    "true_negatives": 699,
+    "false_positives": 49,
+    "false_negatives": 31,
+    "true_positives": 96
+  },
+  "feature_importances": [
+    {
+      "feature": "attendance_rate",
+      "label": "Overall Attendance Rate",
+      "importance": 0.2562
+    },
+    {
+      "feature": "recent_average",
+      "label": "Recent Assessment Average",
+      "importance": 0.2232
+    },
+    {
+      "feature": "trend_num",
+      "label": "Absence Velocity / Spike Trend",
+      "importance": 0.0162
+    },
+    {
+      "feature": "missed_assessments",
+      "label": "Number of Missed Assessments",
+      "importance": 0.1499
+    },
+    {
+      "feature": "homework_completion_rate",
+      "label": "Homework Completion Rate",
+      "importance": 0.2654
+    },
+    {
+      "feature": "previous_average",
+      "label": "Historical Academic Baseline",
+      "importance": 0.0892
+    }
+  ],
+  "scaler_means": [
+    84.80662620914813,
+    70.09847630506464,
+    73.434115163454,
+    0.35619047619047617,
+    0.9752380952380952,
+    80.37356012068105
+  ],
+  "scaler_scales": [
+    11.823759254328007,
+    15.026056475134203,
+    11.975526411722695,
+    0.6549334840124802,
+    1.3874801381594073,
+    12.967775687907292
+  ],
+  "trained_timestamp": "2026-10-13T12:00:00Z"
+}
