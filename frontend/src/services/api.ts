@@ -1,7 +1,9 @@
 import { PredictApiRequest, PredictApiResponse, ModelMetricsInfo } from '../types';
 import { inferStudentRiskClientSide } from './mlEngine';
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+// Relative URLs keep the browser on the same origin in production.
+// Vite proxies /api to the local FastAPI server during development.
+const API_BASE_URL = '';
 
 export interface BackendStatus {
   isConnected: boolean;
@@ -24,7 +26,7 @@ export async function checkBackendHealth(): Promise<BackendStatus> {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 2000);
-    
+
     const response = await fetch(`${API_BASE_URL}/api/health`, {
       signal: controller.signal,
       method: 'GET',
@@ -61,7 +63,7 @@ export function getCachedBackendStatus(): BackendStatus {
  * Predict risk using Python FastAPI backend, falling back to embedded ML client if offline
  */
 export async function predictStudentRisk(
-  req: PredictApiRequest, 
+  req: PredictApiRequest,
   forceClientDemo: boolean = false
 ): Promise<{ result: PredictApiResponse; source: 'connected_model' | 'demo_mode' }> {
   if (!forceClientDemo) {
