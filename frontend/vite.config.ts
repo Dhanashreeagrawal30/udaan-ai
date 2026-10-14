@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // Keep frontend API calls same-origin in production and proxy them locally in dev.
 export default defineConfig({
-  base: '/',
+  base: './',
   plugins: [
     react(),
     tailwindcss(),
